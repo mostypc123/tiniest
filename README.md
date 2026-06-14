@@ -7,10 +7,14 @@ Who needs a `--version` flag on a simple `pwd` or `clear` command? Not me.
 
 ## Differences with GNU
 
+Basically every command is different from GNU, but these differences were made
+on purpose, other than the `-v` and `-h` stuff:
+
 - `touch`: only creates files
 - `yes`: if `argv[0]` is `no`, output `n` instead of `y`
 - `chroot`: use `/bin/sh` as def shell, use `.` as def dir
 - `clear`: command originally from `ncurses`, not coreutils
+- `echo`: does not allow any flags, just prints all arguments
 
 ## Building from source
 
