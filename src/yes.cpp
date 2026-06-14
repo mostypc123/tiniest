@@ -25,7 +25,7 @@ int main(int argc, char* argv[]) {
     if (argc != 1) to_print = argv[1];
 
     loop {
-        std::cout << to_print << std::endl;
+        std::cout << to_print << "\n";
     }
 
     return 0;
