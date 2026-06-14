@@ -26,5 +26,22 @@ int main(int argc, char* argv[]) {
     if (dir == ".")
         std::cout << "chroot: changing to . because no dir was specified" << std::endl;
 
+    // change root
+    if (chroot(dir.c_str()) != 0) {
+        perror("chroot");
+        return 1;
+    }
 
+    // chroot does not change dir
+    if (chdir("/") != 0) {
+        perror("chdir");
+        return 1;
+    }
+
+    char* args[] = { const_cast<char*>(shell.c_str()), nullptr };
+    execv(shell.c_str(), args);
+
+    // only reached if shell failed to start
+    perror("execv");
+    return 1;
 }
