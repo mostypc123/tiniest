@@ -29,6 +29,11 @@ int main(int argc, char* argv[]) {
     if (exist_ok) {
         mkdir(dir.c_str(), 0755);
     } else {
-        return mkdir(dir.c_str(), 0755);
+        if (mkdir(dir.c_str(), 0755) != 0) {
+            perror("mkdir");
+            return 1;
+        }
     }
+
+    return 0;
 }
