@@ -1,5 +1,5 @@
 CXX      := g++
-CXXFLAGS := -Wall -Wextra -Werror -std=c++17 -O3
+CXXFLAGS := -Wall -Wextra -Werror -std=c++20 -O3
 SRC_DIR  := src
 BIN_DIR  := bin
 SRCS     := $(wildcard $(SRC_DIR)/*.cpp)
