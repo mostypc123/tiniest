@@ -15,7 +15,7 @@ on purpose, other than the `-v` and `-h` stuff:
 - `chroot`: use `/bin/sh` as def shell, use `.` as def dir
 - `clear`: command originally from `ncurses`, not coreutils
 - `echo`: does not allow any flags, just prints all arguments
-- `hostname`: totally diff syntax, read `src/hostname.cpp` for info
+- `hostname`: read `src/hostname.cpp` for info
 
 ## Building from source
 
