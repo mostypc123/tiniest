@@ -31,15 +31,21 @@ int main(int argc, char* argv[]) {
         show_all = true;
     }
 
-    for (const auto & entry : std::filesystem::directory_iterator(dir)) {
-        std::string name = entry.path().filename().string();
-        if (show_all || name[0] != '.') {
-            if (show_list) {
-                std::cout << name << std::endl;
-            } else {
-                std::cout << name << "  ";
+    try {
+        for (const auto & entry : std::filesystem::directory_iterator(dir)) {
+            std::string name = entry.path().filename().string();
+            if (show_all || name[0] != '.') {
+                if (show_list) {
+                    std::cout << name << std::endl;
+                } else {
+                    std::cout << name << "  ";
+                }
             }
         }
+    } catch (const std::filesystem::__cxx11::filesystem_error& e) {
+        std::cout << "A filesystem error occured:" << std::endl;
+        std::cout << e.what() << std::endl;
+        return 1;
     }
 
     if (!show_list) std::cout << std::endl;
