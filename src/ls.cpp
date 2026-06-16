@@ -35,7 +35,7 @@ int main(int argc, char* argv[]) {
         std::string name = entry.path().filename().string();
         if (show_all || name[0] != '.') {
             if (show_list) {
-                std::cout << name << "\e[0m" << std::endl;
+                std::cout << name << std::endl;
             } else {
                 std::cout << name << "  ";
             }
