@@ -25,8 +25,11 @@
 int main(int argc, char* argv[]) {
     // show hostname
     if (argc == 1) {
-        char buf[256];
-        gethostname(buf, sizeof(buf));
+        char buf[256] = {};
+        if (gethostname(buf, sizeof(buf) - 1) != 0) {
+            std::cout << "hostname: failed to read hostname" << std::endl;
+            return 1;
+        }
         std::cout << buf << std::endl;
         return 0;
     }
@@ -38,7 +41,7 @@ int main(int argc, char* argv[]) {
             return 2;
         }
 
-        std::fstream hostname_file("/proc/sys/kernel/hostname");
+        std::ofstream hostname_file("/proc/sys/kernel/hostname");
         hostname_file << argv[2];
         hostname_file.close();
 
@@ -47,13 +50,13 @@ int main(int argc, char* argv[]) {
     }
 
     constexpr const char* HOSTNAME_FILE = "/etc/hostname";
-    std::fstream hostname_file(HOSTNAME_FILE);
+    std::ofstream hostname_file(HOSTNAME_FILE);
     hostname_file << argv[1];
     hostname_file.close();
     // also write to the temp host file
-    std::fstream hostnamet_file("/proc/sys/kernel/hostname");
-    hostnamet_file << argv[1];
-    hostnamet_file.close();
+    std::ofstream hostname_tmp_file("/proc/sys/kernel/hostname");
+    hostname_tmp_file << argv[1];
+    hostname_tmp_file.close();
     std::cout << "set hostname to '" << argv[1] << "'" << std::endl;
 
     return 0;

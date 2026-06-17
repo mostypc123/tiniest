@@ -19,15 +19,20 @@ int main(int argc, char* argv[]) {
     int step = 1;
     int end = 1; // this is to supress warnings, it gets changed
 
-    begin = std::stoi(argv[1]);
+    try {
+        begin = std::stoi(argv[1]);
 
-    if (argc == 4) {
-        step = std::stoi(argv[2]);
-        end = std::stoi(argv[3]);
-    }
+        if (argc == 4) {
+            step = std::stoi(argv[2]);
+            end = std::stoi(argv[3]);
+        }
 
-    if (argc == 3) {
-        end = std::stoi(argv[2]);
+        if (argc == 3) {
+            end = std::stoi(argv[2]);
+        }
+    } catch (const std::exception&) {
+        std::cout << "seq: invalid number" << std::endl;
+        return 2;
     }
 
     for (int i = begin; i <= end; i+=step) {

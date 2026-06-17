@@ -1,4 +1,3 @@
-#include "lib.hpp"
 #include <iostream>
 #include <fstream>
 
@@ -18,17 +17,10 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    loop {
-        std::string stdin;
-        std::cin >> stdin;
+    std::string input;
+    while (std::cin >> input) {
+        std::cout << input;
 
-        std::cout << stdin;
-
-        try {
-            file << stdin;
-        } catch (const std::filesystem::__cxx11::filesystem_error& e) {
-            std::cerr << "tee: failed to write to " << argv[1] << std::endl;
-            return 1;
-        }
+        file << input;
     }
 }

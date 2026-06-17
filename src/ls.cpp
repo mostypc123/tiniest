@@ -42,7 +42,7 @@ int main(int argc, char* argv[]) {
                 }
             }
         }
-    } catch (const std::filesystem::__cxx11::filesystem_error& e) {
+    } catch (const std::filesystem::filesystem_error& e) {
         std::cout << "A filesystem error occured:" << std::endl;
         std::cout << e.what() << std::endl;
         return 1;

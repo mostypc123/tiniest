@@ -7,7 +7,7 @@
  */
 namespace tiniest {
     static inline int touch(std::string file_) {
-        if (access(file_.c_str(), F_OK) != 0) {
+        if (access(file_.c_str(), F_OK) == 0) {
             std::cout << "touch: file already exists" << std::endl;
             return 1;
         }
@@ -17,7 +17,6 @@ namespace tiniest {
             std::cout << "touch: failed to open " << file_ << std::endl;
             return 1;
         }
-        file << "";
         return 0;
     }
 }
