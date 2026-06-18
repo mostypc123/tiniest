@@ -3,7 +3,9 @@
 `tiniest` is a coreutils implementation that is as simple as possible.
 Who needs a `--version` flag on a simple `pwd` or `clear` command? Not me.
 
-`tiniest` was made as a C++ learning project.
+`tiniest` was made as a C++ learning project, is a WIP and should not be
+used in production as it purposely removes several features and in some
+places even basic error checking.
 
 ## Differences with GNU
 
