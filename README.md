@@ -7,6 +7,9 @@ Who needs a `--version` flag on a simple `pwd` or `clear` command? Not me.
 used in production as it purposely removes several features and in some
 places even basic error checking.
 
+My goal is to add a new program to `tiniest` every day. This is imo a
+great way to learn.
+
 ## Differences with GNU
 
 Basically every command is different from GNU, but these differences were made
