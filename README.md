@@ -22,6 +22,7 @@ on purpose, other than the `-v` and `-h` stuff:
 - `echo`: does not allow any flags, just prints all arguments
 - `hostname`: read `src/hostname.cpp` for info
 - `ls`: currently does not have colors
+- `kill`: `SIGKILL` by default, more into in `src/kill.cpp`
 
 ## Building from source
 
