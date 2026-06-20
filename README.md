@@ -21,7 +21,7 @@ on purpose, other than the `-v` and `-h` stuff:
 - `clear`: command originally from `ncurses`, not coreutils
 - `echo`: does not allow any flags, just prints all arguments
 - `hostname`: read `src/hostname.cpp` for info
-- `ls`: currently does not have colors
+- `ls`: currently does not have colors, with `l` totally diff format
 - `kill`: `SIGKILL` by default, more into in `src/kill.cpp`
 
 ## Building from source

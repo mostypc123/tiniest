@@ -31,12 +31,23 @@ int main(int argc, char* argv[]) {
         show_all = true;
     }
 
+    int counter = 0;
     try {
+        if (show_list) std::cout << "name size time" << std::endl << "--------------" << std::endl;
         for (const auto & entry : std::filesystem::directory_iterator(dir)) {
+            counter++;
             std::string name = entry.path().filename().string();
             if (show_all || name[0] != '.') {
                 if (show_list) {
-                    std::cout << name << std::endl;
+                    std::string size = "is a dir";
+                    if (!entry.is_directory()) {
+                        size = std::to_string(entry.file_size());
+                    }
+                    auto sctp = std::chrono::time_point_cast<std::chrono::system_clock::duration>(
+                        entry.last_write_time() - std::filesystem::file_time_type::clock::now() + std::chrono::system_clock::now()
+                    );
+                    auto tt = std::chrono::system_clock::to_time_t(sctp);
+                    std::cout << name << "  " << size << "  " << tt << std::endl;
                 } else {
                     std::cout << name << "  ";
                 }
@@ -49,4 +60,5 @@ int main(int argc, char* argv[]) {
     }
 
     if (!show_list) std::cout << std::endl;
+    if (show_list) std::cout << "total " << counter << std::endl;
 }
