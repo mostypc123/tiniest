@@ -22,7 +22,9 @@ on purpose, other than the `-v` and `-h` stuff:
 - `echo`: does not allow any flags, just prints all arguments
 - `hostname`: read `src/hostname.cpp` for info
 - `ls`: currently does not have colors, with `l` totally diff format
-- `kill`: `SIGKILL` by default, more into in `src/kill.cpp`
+- `kill`: originally not from coreutils but `util-linux`,
+  `SIGKILL` by default, more into in `src/kill.cpp`
+- `realpath`: uses `.` as the path if none specified
 
 ## Building from source
 
