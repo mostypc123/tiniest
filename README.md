@@ -25,6 +25,7 @@ on purpose, other than the `-v` and `-h` stuff:
 - `kill`: originally not from coreutils but `util-linux`,
   `SIGKILL` by default, more into in `src/kill.cpp`
 - `realpath`: uses `.` as the path if none specified
+- `df`: currently does not support recursion
 
 ## Building from source
 
