@@ -13,14 +13,20 @@ int main(int argc, char* argv[]) {
 
     try {
         if (std::filesystem::is_directory(argv[1])) {
-            std::cerr << "df: tiniest currently does not support recursion in df" << std::endl;
-            return 2;
+            std::uintmax_t full_size = 0;
+            for (const auto & entry : std::filesystem::directory_iterator(argv[1])) {
+                std::uintmax_t size = std::filesystem::file_size(entry.path());
+                std::cout << entry.path() << "\t" << size << " B" << std::endl;
+                full_size += size;
+            }
+            std::cout << argv[1] << "\t" << full_size << " B" << std::endl;
+            return 0;
         }
 
         std::uintmax_t size = std::filesystem::file_size(argv[1]);
         std::cout << argv[1] << "\t" << size << " B" << std::endl;
     } catch (const std::filesystem::filesystem_error& e) {
-        std::cerr << "df: " << argv[1] << " does not exist" << std::endl;
+        std::cerr << "df: a filesystem error occured" << std::endl;
         return 1;
     }
     return 0;
